@@ -81,7 +81,7 @@
         .legal-header {
             display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content: space-between;
             margin-bottom: 20px;
             padding: 20px;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -111,6 +111,7 @@
 
         .legal-title {
             flex-grow: 1;
+            margin-left: 20px;
         }
 
         .legal-title h1 {
@@ -131,6 +132,15 @@
             font-size: 12px;
             margin-top: 5px;
             font-style: italic;
+        }
+
+        .brand-image-small {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #f39c12;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         /* Role Selection */
@@ -1010,15 +1020,6 @@
                 margin-top: 0;
             }
         }
-
-        /* Brand image in header */
-        .brand-image-small {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 3px solid #f39c12;
-            object-fit: cover;
-        }
     </style>
     <!-- Load QR Code library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
@@ -1026,21 +1027,16 @@
 <body>
     <div class="container" id="app">
         <!-- Legal Header with Lady Justice Logo and Brand Image -->
-        <div class="legal-header" id="legalHeader" style="display: flex; align-items: center; justify-content: space-between;">
+        <div class="legal-header">
             <div style="display: flex; align-items: center; gap: 20px;">
                 <div class="legal-logo">
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Lady Justice / Femida Statue -->
                         <circle cx="50" cy="35" r="15" fill="#f39c12" opacity="0.2"/>
-                        <!-- Scales of Justice -->
                         <rect x="30" y="50" width="40" height="5" fill="#f39c12"/>
                         <circle cx="40" cy="60" r="8" fill="none" stroke="#f39c12" stroke-width="3"/>
                         <circle cx="60" cy="60" r="8" fill="none" stroke="#f39c12" stroke-width="3"/>
-                        <!-- Blindfold -->
                         <rect x="40" y="28" width="20" height="4" fill="#f39c12"/>
-                        <!-- Sword -->
                         <line x1="70" y1="20" x2="85" y2="45" stroke="#f39c12" stroke-width="3"/>
-                        <!-- Robe -->
                         <path d="M35 50 L40 80 L60 80 L65 50" fill="none" stroke="#f39c12" stroke-width="2"/>
                     </svg>
                 </div>
@@ -1050,7 +1046,6 @@
                     <p>Established 2010 • Registered under Ugandan Law • All contracts legally binding</p>
                 </div>
             </div>
-            <!-- Brand Image on Right Side -->
             <img src="https://image2url.com/r2/default/images/1773640341878-2e921e50-3b60-4b29-b66d-c3a0b97214bf.jpeg" alt="Jeans Club Brand" class="brand-image-small">
         </div>
 
@@ -1085,51 +1080,44 @@
                         <input type="tel" id="phone" placeholder="Phone Number (Ugandan)" required>
                         <input type="text" id="national-id" placeholder="National ID Number" required>
                         
-                        <!-- START DATE FIELD -->
                         <div class="date-field full-width">
                             <label for="start-date">📅 EMPLOYMENT START DATE (First day of work)</label>
                             <input type="date" id="start-date" required>
                             <small>⚠️ This is your FIRST DAY OF WORK. Select the date you will begin employment.</small>
                         </div>
                         
-                        <!-- CONTRACT DURATION SELECTION - WORKER CHOOSES -->
+                        <!-- CONTRACT DURATION SELECTION -->
                         <div class="full-width" style="margin-top: 20px; padding: 20px; background: #fff3e0; border-radius: 10px; border: 2px solid #f39c12;">
                             <h4 style="color: #1a2f3f; margin-bottom: 15px; font-size: 18px;">📅 CHOOSE YOUR CONTRACT DURATION</h4>
-                            <p style="color: #666; margin-bottom: 15px;">Select how long you want your contract to last. This determines your expiry date.</p>
+                            <p style="color: #666; margin-bottom: 15px;">Select how long you want your contract to last.</p>
                             
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-bottom: 20px;">
                                 <label style="display: flex; align-items: center; gap: 5px; padding: 10px; background: white; border-radius: 8px; border: 2px solid #e0e0e0; cursor: pointer;">
                                     <input type="radio" name="contract-duration" value="3_months" style="width: 16px; height: 16px; cursor: pointer;">
                                     <span>3 Months</span>
                                 </label>
-                                
                                 <label style="display: flex; align-items: center; gap: 5px; padding: 10px; background: white; border-radius: 8px; border: 2px solid #e0e0e0; cursor: pointer;">
                                     <input type="radio" name="contract-duration" value="6_months" style="width: 16px; height: 16px; cursor: pointer;">
                                     <span>6 Months</span>
                                 </label>
-                                
                                 <label style="display: flex; align-items: center; gap: 5px; padding: 10px; background: #f39c12; border-radius: 8px; border: 2px solid #1a2f3f; cursor: pointer;">
                                     <input type="radio" name="contract-duration" value="12_months" checked style="width: 16px; height: 16px; cursor: pointer;">
                                     <span>12 Months <span style="color: #1a2f3f;">(Recommended)</span></span>
                                 </label>
-                                
                                 <label style="display: flex; align-items: center; gap: 5px; padding: 10px; background: white; border-radius: 8px; border: 2px solid #e0e0e0; cursor: pointer;">
                                     <input type="radio" name="contract-duration" value="18_months" style="width: 16px; height: 16px; cursor: pointer;">
                                     <span>18 Months</span>
                                 </label>
-                                
                                 <label style="display: flex; align-items: center; gap: 5px; padding: 10px; background: white; border-radius: 8px; border: 2px solid #e0e0e0; cursor: pointer;">
                                     <input type="radio" name="contract-duration" value="24_months" style="width: 16px; height: 16px; cursor: pointer;">
                                     <span>24 Months</span>
                                 </label>
-                                
                                 <label style="display: flex; align-items: center; gap: 5px; padding: 10px; background: white; border-radius: 8px; border: 2px solid #e0e0e0; cursor: pointer;">
                                     <input type="radio" name="contract-duration" value="permanent" style="width: 16px; height: 16px; cursor: pointer;">
                                     <span>Permanent</span>
                                 </label>
                             </div>
                             
-                            <!-- CUSTOM DURATION -->
                             <div style="margin-top: 15px; padding-top: 15px; border-top: 2px dashed #f39c12;">
                                 <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
                                     <label style="display: flex; align-items: center; gap: 8px;">
@@ -1142,7 +1130,6 @@
                                 <small style="display: block; color: #666; margin-top: 8px;">Enter days then click APPLY CUSTOM</small>
                             </div>
                             
-                            <!-- Selected Duration Display -->
                             <div id="selected-duration-display" style="margin-top: 15px; padding: 10px; background: #1a2f3f; color: white; border-radius: 8px; text-align: center;">
                                 Selected: <span id="duration-text">12 Months (Recommended)</span>
                             </div>
@@ -1177,7 +1164,7 @@
 
                 <div class="form-section">
                     <h3>SECTION D: REQUIRED DOCUMENTS UPLOAD</h3>
-                    <p style="color: #666; margin-bottom: 15px;">Please upload clear copies of the following documents. These will be attached to your contract and sent to management.</p>
+                    <p style="color: #666; margin-bottom: 15px;">Please upload clear copies of the following documents.</p>
                     
                     <div class="upload-area">
                         <input type="file" id="file-input" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" onchange="handleFileSelect()">
@@ -1186,9 +1173,7 @@
                         <p style="color: #e74c3c; font-size: 12px;">Required: National ID, Passport Photo, CV, Academic Certificates</p>
                     </div>
                     
-                    <div id="file-list" class="file-list">
-                        <!-- Uploaded files will appear here -->
-                    </div>
+                    <div id="file-list" class="file-list"></div>
                 </div>
 
                 <!-- SIGNATURE SECTION -->
@@ -1196,64 +1181,26 @@
                     <h3>🔏 LEGALLY BINDING ELECTRONIC SIGNATURE</h3>
                     
                     <div class="signature-confirmations">
-                        <label>
-                            <input type="checkbox" id="confirmIdentity" onchange="checkSignatureReady()">
-                            <span>✅ I CONFIRM my identity: <strong id="confirmNameDisplay">[Enter name above]</strong> (National ID: <strong id="confirmIdDisplay">[Enter ID above]</strong>).</span>
-                        </label>
-                        
-                        <label>
-                            <input type="checkbox" id="confirmRead" onchange="checkSignatureReady()">
-                            <span>✅ I CONFIRM that I have read and understood ALL 25 clauses of this contract.</span>
-                        </label>
-                        
-                        <label>
-                            <input type="checkbox" id="confirmAgree" onchange="checkSignatureReady()">
-                            <span>✅ I AGREE to all terms including financial penalties up to <strong>5,000,000 UGX</strong>.</span>
-                        </label>
-                        
-                        <label>
-                            <input type="checkbox" id="confirmPostEmployment" onchange="checkSignatureReady()">
-                            <span>✅ I UNDERSTAND post-employment obligations continue after leaving.</span>
-                        </label>
-                        
-                        <label style="background: #f39c12; color: #1a2f3f; border: 2px solid white;">
-                            <input type="checkbox" id="confirmElectronicSignature" onchange="checkSignatureReady()" style="accent-color: #1a2f3f;">
-                            <span style="font-weight: bold; color: #1a2f3f;">🔏 ELECTRONIC SIGNATURE CONSENT: I agree that my typed name below is my official electronic signature under the Uganda Electronic Signatures Act, 2011.</span>
-                        </label>
+                        <label><input type="checkbox" id="confirmIdentity" onchange="checkSignatureReady()"> <span>✅ I CONFIRM my identity: <strong id="confirmNameDisplay">[Enter name]</strong> (ID: <strong id="confirmIdDisplay">[Enter ID]</strong>)</span></label>
+                        <label><input type="checkbox" id="confirmRead" onchange="checkSignatureReady()"> <span>✅ I CONFIRM I have read ALL 25 clauses</span></label>
+                        <label><input type="checkbox" id="confirmAgree" onchange="checkSignatureReady()"> <span>✅ I AGREE to all terms including penalties up to 5,000,000 UGX</span></label>
+                        <label><input type="checkbox" id="confirmPostEmployment" onchange="checkSignatureReady()"> <span>✅ I UNDERSTAND post-employment obligations continue</span></label>
+                        <label style="background: #f39c12; color: #1a2f3f;"><input type="checkbox" id="confirmElectronicSignature" onchange="checkSignatureReady()"> <span>🔏 ELECTRONIC SIGNATURE CONSENT</span></label>
                     </div>
                     
                     <div class="signature-input">
-                        <p style="color: #f39c12; margin-bottom: 5px; font-size: 18px; font-weight: bold;">✍️ TYPE YOUR FULL NAME AS YOUR ELECTRONIC SIGNATURE:</p>
-                        <input type="text" id="typedSignature" placeholder="TYPE YOUR FULL NAME HERE" style="font-size: 20px; padding: 15px; border: 3px solid #f39c12;" oninput="checkSignatureReady()">
+                        <p style="color: #f39c12; font-weight: bold;">✍️ TYPE YOUR FULL NAME AS SIGNATURE:</p>
+                        <input type="text" id="typedSignature" placeholder="TYPE YOUR FULL NAME HERE" style="font-size: 20px; padding: 15px;" oninput="checkSignatureReady()">
                     </div>
                     
-                    <button id="executeSignatureBtn" class="signature-button" disabled onclick="executeLegalSignature()">
-                        🔏 EXECUTE LEGAL ELECTRONIC SIGNATURE
-                    </button>
-                    
-                    <div class="signature-footer">
-                        <p style="color: #f39c12; font-size: 16px; font-weight: bold; margin-bottom: 15px;">📋 ELECTRONIC SIGNATURE ACKNOWLEDGMENT</p>
-                        
-                        <ul style="color: white; text-align: left; margin-left: 20px; list-style-type: none;">
-                            <li style="margin-bottom: 8px;">✅ 1. My typed name is my official electronic signature under Ugandan law.</li>
-                            <li style="margin-bottom: 8px;">✅ 2. This signature has the same legal effect as my handwritten signature.</li>
-                            <li style="margin-bottom: 8px;">✅ 3. I cannot later deny that this signature is mine.</li>
-                            <li style="margin-bottom: 8px;">✅ 4. My IP address and timestamp will be recorded as evidence.</li>
-                        </ul>
-                        
-                        <p style="color: #f39c12; font-size: 16px; font-weight: bold; margin: 15px 0 5px;">🔒 NON-REPUDIATION CLAUSE:</p>
-                        <p style="color: white; font-style: italic;">"I waive any right to claim that this electronic signature is not mine. This contract is admissible as evidence in legal proceedings."</p>
-                    </div>
+                    <button id="executeSignatureBtn" class="signature-button" disabled onclick="executeLegalSignature()">🔏 EXECUTE LEGAL ELECTRONIC SIGNATURE</button>
                 </div>
 
                 <!-- Contract Clauses Preview Toggle -->
-                <div class="clauses-preview" onclick="toggleClauses()">
-                    📜 CLICK TO VIEW ALL 25 COMPLETE CONTRACT CLAUSES
-                </div>
+                <div class="clauses-preview" onclick="toggleClauses()">📜 CLICK TO VIEW ALL 25 COMPLETE CONTRACT CLAUSES</div>
                 <div id="clauses-preview-container" class="clauses-container"></div>
 
                 <button class="generate-btn" onclick="prepareContractForGeneration()" id="generateContractBtn" disabled>📄 GENERATE OFFICIAL CONTRACT WITH QR CODE</button>
-                <p style="font-size: 12px; color: #e74c3c; text-align: center;">You must sign above before generating contract.</p>
             </div>
 
             <!-- Contract Preview -->
@@ -1264,58 +1211,37 @@
         <div id="manager-password" style="display: none;">
             <div class="password-protect">
                 <h2 style="color: #1a2f3f;">🔐 MANAGER ACCESS</h2>
-                <p style="margin: 20px 0; color: #666;">Enter password to access manager controls</p>
                 <input type="password" id="manager-password-input" placeholder="Enter password">
-                <button onclick="checkManagerPassword()" style="background: #f39c12; color: #1a2f3f; padding: 15px; border: none; border-radius: 8px; font-weight: bold; width: 100%; cursor: pointer;">ACCESS MANAGER PANEL</button>
-                <button onclick="showRoleScreen()" style="background: #95a5a6; color: white; padding: 10px; border: none; border-radius: 5px; margin-top: 10px; width: 100%; cursor: pointer;">CANCEL</button>
+                <button onclick="checkManagerPassword()" style="background: #f39c12; padding: 15px; width: 100%;">ACCESS MANAGER PANEL</button>
+                <button onclick="showRoleScreen()" style="background: #95a5a6; padding: 10px; width: 100%; margin-top: 10px;">CANCEL</button>
             </div>
         </div>
 
         <!-- Manager Editor -->
         <div id="manager-editor" style="display: none;">
             <button class="back-btn" onclick="showRoleScreen()">← RETURN TO MAIN MENU</button>
-            
             <div class="manager-editor">
-                <h2 style="color: #1a2f3f; margin-bottom: 20px;">✏️ MASTER CONTRACT ADMINISTRATION</h2>
+                <h2 style="color: #1a2f3f;">✏️ MASTER CONTRACT ADMINISTRATION</h2>
                 
-                <!-- Manager Signature Settings -->
                 <div class="manager-signature-settings">
-                    <h3>👔 MANAGER SIGNATURE CONFIGURATION</h3>
-                    <p style="margin-bottom: 15px; color: #f39c12;">Set the manager name that will appear on all contracts</p>
-                    
-                    <label style="color: white; display: block; margin-bottom: 5px;">Manager Full Name:</label>
-                    <input type="text" id="manager-name" placeholder="e.g., Mr. Abaho" value="Mr. Abaho">
-                    
-                    <label style="color: white; display: block; margin-bottom: 5px; margin-top: 15px;">Manager Title/Position:</label>
-                    <input type="text" id="manager-title" placeholder="e.g., Store Manager" value="SHOP EXECUTIVE">
-                    
-                    <button onclick="saveManagerSignature()">💾 SAVE MANAGER SIGNATURE</button>
-                    <p style="color: #f39c12; font-size: 12px; margin-top: 10px;">Current manager: <span id="current-manager-display">Mr. Abaho (SHOP EXECUTIVE)</span></p>
+                    <h3>👔 MANAGER SIGNATURE</h3>
+                    <input type="text" id="manager-name" value="Mr. Abaho">
+                    <input type="text" id="manager-title" value="SHOP EXECUTIVE">
+                    <button onclick="saveManagerSignature()">💾 SAVE</button>
                 </div>
                 
-                <!-- Contract Duration Settings (Fallback only) -->
                 <div class="duration-settings">
-                    <h3>⚙️ DEFAULT CONTRACT DURATION (FALLBACK ONLY)</h3>
-                    <p style="margin-bottom: 15px; color: #666;">This is only used if worker doesn't select their own duration. Workers now choose their own duration in the registration form.</p>
-                    
+                    <h3>⚙️ DEFAULT DURATION (FALLBACK)</h3>
                     <div class="duration-grid">
                         <div class="duration-option" onclick="setDuration(3, 'months')">3 MONTHS</div>
                         <div class="duration-option" onclick="setDuration(6, 'months')">6 MONTHS</div>
                         <div class="duration-option" onclick="setDuration(12, 'months')">12 MONTHS</div>
                         <div class="duration-option" onclick="setDuration(24, 'months')">24 MONTHS</div>
                     </div>
-                    
-                    <div style="margin-top: 20px; padding: 15px; background: #1a2f3f; color: white; border-radius: 8px;">
-                        <strong>DEFAULT FALLBACK:</strong> <span id="current-duration-display">12 MONTHS</span>
-                    </div>
                 </div>
 
-                <!-- Clause Editor -->
-                <h3 style="color: #1a2f3f; margin: 30px 0 15px;">📜 CONTRACT CLAUSES EDITOR (25 CLAUSES)</h3>
                 <div id="clauses-container"></div>
-                
-                <button class="master-save" onclick="saveAllClauses()">💾 SAVE ALL CLAUSE AMENDMENTS</button>
-                <button class="master-save" onclick="downloadMasterContract()" style="background: #27ae60;">📥 DOWNLOAD MASTER CONTRACT</button>
+                <button class="master-save" onclick="saveAllClauses()">💾 SAVE ALL CLAUSES</button>
             </div>
         </div>
 
@@ -1328,42 +1254,61 @@
 
     <script>
         // ============================================
-        // INITIALIZATION
-        // ============================================
-        localStorage.removeItem('jeans_club_clauses');
-        console.log('Loading 25 clauses...');
-
-        // ============================================
-        // CONTRACT CLAUSES (Full 25 clauses - shortened for display here)
+        // COMPLETE 25 CLAUSES - FULL TEXT
         // ============================================
         const contractClauses = [
-            "CLAUSE 1: DEFINITIONS AND INTERPRETATION - Full text as before...",
-            "CLAUSE 2: COMMENCEMENT AND DURATION - Full text as before...",
-            "CLAUSE 3: POSITION AND DUTIES - Full text as before...",
-            "CLAUSE 4: WORKING HOURS AND ATTENDANCE - Full text as before...",
-            "CLAUSE 5: LEAVE AND ABSENCES - Full text as before...",
-            "CLAUSE 6: COMPENSATION STRUCTURE - Full text as before...",
-            "CLAUSE 7: TERMINATION OF EMPLOYMENT - Full text as before...",
-            "CLAUSE 8: FINANCIAL PENALTIES - GENERAL PROVISIONS - Full text as before...",
-            "CLAUSE 9: PENALTIES FOR THEFT, FRAUD, AND DISHONESTY - Full text as before...",
-            "CLAUSE 10: PENALTIES FOR OPERATIONAL BREACHES - Full text as before...",
-            "CLAUSE 11: PENALTIES FOR CONDUCT AND BEHAVIOR BREACHES - Full text as before...",
-            "CLAUSE 12: ESCALATION AND CUMULATIVE PENALTIES - Full text as before...",
-            "CLAUSE 13: SURVIVAL OF OBLIGATIONS - Full text as before...",
-            "CLAUSE 14: NON-COMPETE COVENANT - Full text as before...",
-            "CLAUSE 15: NON-SOLICITATION COVENANT - Full text as before...",
-            "CLAUSE 16: CUSTOMER RELATIONSHIP PROTECTION - Full text as before...",
-            "CLAUSE 17: INTELLECTUAL PROPERTY - Full text as before...",
-            "CLAUSE 18: CUSTOMER SERVICE STANDARDS - Full text as before...",
-            "CLAUSE 19: STORE OPERATIONS AND STANDARDS - Full text as before...",
-            "CLAUSE 20: DISCRETIONARY BENEFITS - Full text as before...",
-            "CLAUSE 21: ACKNOWLEDGMENT AND ACCEPTANCE - Full text as before...",
-            "CLAUSE 22: ELECTRONIC SIGNATURE AND NON-REPUDIATION - Full text as before...",
-            "CLAUSE 23: DISPUTE RESOLUTION - Full text as before...",
-            "CLAUSE 24: NOTICES - Full text as before...",
-            "CLAUSE 25: AMENDMENTS AND WAIVERS - Full text as before..."
+            `CLAUSE 1: DEFINITIONS AND INTERPRETATION\n\n1.1 Definitions: In this Agreement, unless the context otherwise requires:\n\n- "Company" means JEANS CLUB (U) LTD, a company registered under the laws of the Republic of Uganda with Registration Number [XXXXX], and includes its successors, assigns, subsidiaries, affiliates, and any person acting on its behalf.\n\n- "Employee" means the individual named in Schedule A to this Agreement, and includes their heirs, executors, administrators, and legal representatives.\n\n- "Employment Period" means the period commencing on the Start Date and continuing until terminated in accordance with Clause 7.\n\n- "Confidential Information" means all information, whether written or oral, tangible or intangible, that is proprietary to the Company or entrusted to the Company by third parties, including but not limited to: trade secrets; business plans; financial data; customer lists and customer information; supplier information; pricing strategies; marketing plans; sales data; personnel records; operational methods; computer systems and passwords; intellectual property; and any information that derives independent economic value from not being generally known.\n\n- "Gross Misconduct" means any act or omission that constitutes: (a) theft, fraud, or dishonesty; (b) violence or threats of violence; (c) harassment or discrimination prohibited by law; (d) deliberate damage to Company property; (e) serious insubordination; (f) breach of confidentiality; (g) being under the influence of alcohol or illegal drugs during working hours; (h) conviction of any criminal offence that brings the Company into disrepute; or (i) any other conduct that fundamentally undermines the employment relationship.\n\n- "Sales Target" means the minimum sales amount assigned to the Employee for a specified period, as determined by the Company in its reasonable discretion and communicated to the Employee in writing.\n\n- "Weekly Sales Target" means 5,000,000 UGX (Five Million Uganda Shillings) per week, which is the minimum sales amount the Employee must achieve each week. This target may be adjusted by the Company based on location, season, and business conditions, with reasonable notice to the Employee.\n\n- "UGX" means Uganda Shillings, the lawful currency of the Republic of Uganda.\n\n1.2 Interpretation: In this Agreement, unless the context otherwise requires: (a) Words importing the singular include the plural and vice versa. (b) Words importing any gender include all genders. (c) References to "Clauses" are to clauses of this Agreement. (d) Headings are for convenience only and do not affect interpretation. (e) References to any statute or statutory provision include any modification, re-enactment, or extension thereof.\n\n1.3 Entire Agreement: This Agreement (including Schedule A and any documents expressly incorporated by reference) constitutes the entire agreement between the parties and supersedes all prior agreements, representations, understandings, negotiations, and discussions, whether written or oral. The Employee acknowledges that they have not relied on any representation not expressly set forth in this Agreement.\n\n1.4 Severability: If any provision of this Agreement is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the remaining provisions shall remain in full force and effect. If any provision is found invalid, illegal, or unenforceable due to scope or duration, the parties agree that such provision shall be modified to the minimum extent necessary to make it enforceable while preserving its intent.\n\n1.5 Governing Law and Jurisdiction: This Agreement shall be governed by and construed in accordance with the laws of the Republic of Uganda. The parties irrevocably submit to the exclusive jurisdiction of the courts of Uganda for all purposes related to this Agreement. The Employee waives any objection based on inconvenient forum or lack of personal jurisdiction.`,
+
+            `CLAUSE 2: COMMENCEMENT AND DURATION\n\n2.1 Commencement: The Employee's employment shall commence on the Start Date set forth in Schedule A.\n\n2.2 Duration: The employment shall continue until terminated in accordance with Clause 7. Nothing in this Agreement guarantees employment for any fixed period, and employment is terminable as provided herein.\n\n2.3 Probationary Period: The Employee shall serve a probationary period of three (3) months from the Start Date. The Company may, at its sole discretion, extend the probationary period by an additional three (3) months upon written notice to the Employee. During the probationary period: (a) The Company may terminate employment without notice or severance. (b) The Employee is not eligible for any bonuses, commissions, or other discretionary benefits. (c) The Company may evaluate the Employee's performance at any interval it deems appropriate.\n\n2.4 Confirmation: Upon successful completion of the probationary period, the Employee shall be confirmed in employment, subject to the terms of this Agreement. Confirmation does not alter the at-will nature of employment as defined in Clause 7.`,
+
+            `CLAUSE 3: POSITION AND DUTIES\n\n3.1 Position: The Employee shall serve in the position set forth in Schedule A, reporting to such person(s) as the Company may designate.\n\n3.2 Primary Duties: The Employee's primary duties include, but are not limited to: (a) Maximizing the Company's profits through all lawful means; (b) Selling merchandise and achieving or exceeding the Weekly Sales Target of 5,000,000 UGX; (c) Upselling accessories and complementary items to increase transaction value; (d) Providing exceptional customer service; (e) Maintaining store appearance and merchandise displays; (f) Protecting Company assets from theft, damage, or loss; (g) Performing such other duties as may be reasonably assigned.\n\n3.3 Best Efforts: The Employee shall devote their full working time, attention, and abilities to the performance of their duties and shall act in the best interests of the Company at all times.\n\n3.4 Compliance: The Employee shall comply with all Company policies, procedures, and reasonable instructions, as amended from time to time.\n\n3.5 No Conflict: The Employee shall not, during the Employment Period, engage in any other business activity that conflicts with their duties to the Company or that would interfere with the performance of their obligations under this Agreement.`,
+
+            `CLAUSE 4: WORKING HOURS AND ATTENDANCE\n\n4.1 Working Hours: The Employee shall work a minimum of forty-eight (48) hours per week, inclusive of weekends and public holidays when the Company is open for business. Specific shifts shall be determined by the Company based on operational requirements.\n\n4.2 Pre-Shift Preparation: The Employee shall arrive at least thirty (30) minutes before scheduled shift commencement for briefing, preparation, and to ensure readiness to serve customers precisely at shift start time. This pre-shift time is unpaid.\n\n4.3 Time Recording: The Employee must accurately record their attendance using the Company's timekeeping system at the beginning and end of each shift and any breaks. Falsification of time records constitutes Gross Misconduct.\n\n4.4 Punctuality: (a) Lateness exceeding fifteen (15) minutes on three (3) occasions in any calendar month constitutes a breach of this Agreement. (b) The Company may impose a penalty of 50,000 UGX for such lateness, deducted from wages. (c) More than six (6) lateness incidents in any six-month period may result in termination.\n\n4.5 Schedule Flexibility: The Employee acknowledges that retail operations require flexibility and agrees to work overtime when reasonably required, cover shifts for absent colleagues, and work during peak seasons and holidays. Refusal to work reasonable overtime may result in disciplinary action up to and including termination.\n\n4.6 Transportation: The Employee is solely responsible for their own transportation to and from work at all hours. Transportation issues shall not constitute an acceptable excuse for lateness or absence.`,
+
+            `CLAUSE 5: LEAVE AND ABSENCES\n\n5.1 No Paid Leave: The Company does not provide any form of paid leave, including but not limited to annual leave, sick leave, maternity leave, paternity leave, bereavement leave, or any other compensated time off.\n\n5.2 Approved Unpaid Leave: (a) Any absence from work must be approved in writing by management at least seven (7) days in advance. (b) In the case of genuine medical emergencies, the Employee must submit a medical certificate from a recognized Ugandan medical facility within forty-eight (48) hours of the absence. (c) All approved leave is UNPAID.\n\n5.3 Unauthorized Absence: Any absence without required approval constitutes a breach of this Agreement and may be treated as Gross Misconduct, resulting in immediate termination and forfeiture of any unpaid wages.\n\n5.4 Attendance Requirement: The Employee acknowledges that attendance is critical to store operations and that any absence places additional burden on colleagues.`,
+
+            `CLAUSE 6: COMPENSATION STRUCTURE\n\n6.1 Base Compensation: The Employee shall receive base compensation as set forth in Schedule A, payable monthly in arrears, subject to all applicable deductions and withholdings required by law.\n\n6.2 Weekly Sales Target: The Employee must achieve a minimum Weekly Sales Target of 5,000,000 UGX (Five Million Uganda Shillings) each week. This target is mandatory for continued employment.\n\n6.3 Sales Targets: (a) The Company shall assign monthly Sales Targets to the Employee, communicated in writing at the beginning of each month. (b) Sales Targets may vary based on location, season, individual performance, and business conditions. (c) Achieving the monthly Sales Target is mandatory for continued employment. (d) The Company reserves the right to adjust Sales Targets with reasonable notice.\n\n6.4 Commission: (a) Employees who exceed the monthly Sales Target by twenty percent (20%) or more shall receive a commission of two percent (2%) on all sales above the target. (b) Commissions shall be calculated and paid with the following month's wages. (c) No commission shall be payable if employment terminates before the commission payment date.\n\n6.5 Performance Below Target: Employees failing to achieve eighty percent (80%) of the monthly Sales Target for three (3) consecutive months may be terminated for poor performance.\n\n6.6 Performance Reviews: (a) The Employee shall undergo monthly performance reviews measuring: (i) Total sales against target; (ii) Customer satisfaction; (iii) Upselling rate; (iv) Attendance and punctuality; (v) Adherence to Company policies. (b) Reviews shall be documented in writing and maintained in the Employee's personnel file. (c) The Employee shall have an opportunity to respond to any performance concerns during the review. (d) Poor performance ratings may lead to probation, suspension, or termination at the Company's sole discretion.`,
+
+            `CLAUSE 7: TERMINATION OF EMPLOYMENT\n\n7.1 Termination by Either Party: Either party may terminate this Agreement by giving written notice as follows: (a) Fourteen (14) days' notice for Employees with less than twelve (12) months of service. (b) Thirty (30) days' notice for Employees with twelve (12) months or more of service, or for Employees in supervisory positions, or for Employees designated as key customer relationship holders.\n\n7.2 Termination for Gross Misconduct: The Company may terminate this Agreement immediately without notice or payment in lieu of notice if the Employee commits Gross Misconduct.\n\n7.3 Termination During Probation: During the probationary period, the Company may terminate this Agreement without notice or severance.\n\n7.4 Resignation Notice: (a) The Employee must provide written notice of resignation at least thirty (30) calendar days in advance. (b) For Employees who have been with the Company for more than twelve (12) months, or who hold supervisory positions, or who are designated as key customer relationship holders, the notice period shall be sixty (60) calendar days. (c) During the notice period, the Employee shall: (i) Continue to perform all duties with the same diligence and professionalism; (ii) Assist in training replacement staff; (iii) Introduce customers to remaining team members; (iv) Complete all pending tasks and prepare comprehensive handover notes; (v) Return all Company property before the final day. (d) If the Employee fails to work the full notice period without the Company's written consent, the Employee shall pay liquidated damages of 2,000,000 UGX to the Company and forfeit any accrued but unpaid wages, commissions, or benefits.\n\n7.5 Return of Property: Upon termination for any reason, the Employee shall immediately return all Company property, including but not limited to uniforms, keys, access cards, documents, data, and any other items belonging to the Company.`,
+
+            `CLAUSE 8: FINANCIAL PENALTIES - GENERAL PROVISIONS\n\n8.1 Authority to Impose Penalties: The Company may impose financial penalties for breaches of this Agreement as set forth in this Article. Penalties are intended to compensate the Company for losses and to deter future breaches.\n\n8.2 Consent to Deduction: The Employee expressly authorizes the Company to deduct any penalties, fines, or shortages from their wages without additional consent. This authorization is given freely and is an essential condition of employment.\n\n8.3 Notice of Penalty: The Company shall provide written notice of any penalty imposed, including the amount and the reason, and shall give the Employee an opportunity to respond before deduction where practicable.\n\n8.4 Post-Employment Recovery: If employment terminates before all penalties are fully deducted, the Employee agrees to pay the remaining amount within thirty (30) days. The Company may pursue all available legal remedies for collection, including debt collection proceedings, civil litigation, and enforcement of judgment.\n\n8.5 Survival: This Clause 8 and the specific penalties in Clauses 9-12 survive termination of employment indefinitely.`,
+
+            `CLAUSE 9: PENALTIES FOR THEFT, FRAUD, AND DISHONESTY\n\n9.1 Penalty Table:\n\n| Offense | First Offense Penalty | Subsequent Offense Penalty |\n|---------|----------------------|----------------------------|\n| Theft of Company property, merchandise, cash, or assets | 1,000,000 UGX fine + police report | 3,000,000 UGX fine + termination |\n| Fraud (falsifying records, fake returns, manipulating inventory, deceiving customers) | 2,500,000 UGX fine + immediate termination | 5,000,000 UGX fine + criminal prosecution |\n| Dishonesty toward customers (incorrect pricing, false promises, misleading tactics) | 650,000 UGX fine | Termination |\n| Unauthorized discounts to friends, family, or self | 750,000 UGX fine + reimbursement of discount amount | Immediate termination |\n| Falsification of time records | 500,000 UGX fine per occurrence | Termination |\n\n9.2 Definition of Theft: For purposes of this Clause, "theft" includes actual theft, attempted theft, conspiracy to commit theft, and knowing possession of stolen Company property. "Theft of time" includes falsifying time records or claiming compensation for time not actually worked.\n\n9.3 Restitution: In addition to any fines imposed, the Employee shall make full restitution for any stolen property, misappropriated funds, or losses caused by fraudulent activity.\n\n9.4 Criminal Prosecution: The Company reserves the right to pursue criminal prosecution for any theft or fraud, regardless of whether fines are imposed or paid.`,
+
+            `CLAUSE 10: PENALTIES FOR OPERATIONAL BREACHES\n\n10.1 Penalty Table:\n\n| Breach Type | Penalty Amount | Notes |\n|-------------|---------------|-------|\n| Cash handling shortage exceeding 10,000 UGX | Reimbursement + 250,000 UGX for repeated shortages | Must reimburse within 24 hours |\n| Willful or negligent damage to merchandise | Replacement cost + 500,000 UGX penalty | |\n| Confidentiality breach | 5,000,000 UGX + immediate termination + legal action | |\n| Unauthorized returns/exchanges | 500,000 UGX | |\n| Poor presentation affecting sales | 100,000 UGX per occurrence | |\n| Cleanliness violation | 50,000 UGX per violation | |\n| Unexcused absence from mandatory training | 150,000 UGX | |\n| Failure to report observed misconduct | Same penalty as primary offender | |\n| False or malicious reports | 1,000,000 UGX | |\n| Failure to maintain current documentation | 200,000 UGX | |\n| Inventory errors causing losses | Proportional to loss (min 200,000 UGX) | |\n| Security breach due to negligence | 1,000,000 UGX + possible termination | |\n\n10.2 Confidentiality Defined: Confidential Information includes, but is not limited to: trade secrets; business plans; financial data; customer lists and customer information; supplier information; pricing strategies; marketing plans; sales data; personnel records; operational methods; computer systems and passwords; intellectual property; and any information that derives independent economic value from not being generally known.\n\n10.3 Reporting Obligation: The Employee has an affirmative duty to report any observed misconduct by colleagues to management immediately. Failure to report makes the Employee subject to the same penalties as the primary offender.\n\n10.4 Whistleblower Protection: Employees reporting misconduct in good faith shall be protected from retaliation. Retaliation against good-faith reporters is itself a breach of this Agreement subject to penalty.`,
+
+            `CLAUSE 11: PENALTIES FOR CONDUCT AND BEHAVIOR BREACHES\n\n11.1 Penalty Table:\n\n| Breach Type | First Offense Penalty | Subsequent Offense Penalty |\n|-------------|----------------------|----------------------------|\n| Gross Misconduct (violence, harassment, hostile work environment) | 2,000,000 UGX + immediate termination | N/A |\n| Rude, dismissive, or unhelpful customer behavior | 200,000 UGX | Termination |\n| Appearance or uniform violation | 50,000 UGX per incident | 100,000 UGX per incident |\n| Negative statements about Company (any medium) | 1,500,000 UGX | Termination |\n| Social media content damaging to Company | 2,000,000 UGX + possible termination | Termination |\n| Breach of non-compete (Clause 14) | 5,000,000 UGX | Injunctive relief |\n| Breach of non-solicitation (Clause 15) | 5,000,000 UGX | Injunctive relief |\n| Breach of customer protection (Clause 16) | 3,000,000 UGX + damages per customer | Injunctive relief |\n\n11.2 Definition of Gross Misconduct: Gross Misconduct includes, but is not limited to: (a) Physical altercations or violence; (b) Verbal abuse of customers, colleagues, or managers; (c) Harassment or discrimination prohibited by law; (d) Creating a hostile work environment; (e) Theft, fraud, or dishonesty; (f) Deliberate damage to Company property; (g) Serious insubordination; (h) Breach of confidentiality; (i) Being under the influence of alcohol or illegal drugs during working hours; (j) Conviction of any criminal offence that brings the Company into disrepute.\n\n11.3 Social Media Policy: The Employee shall not post any content that could damage the Company's reputation, including complaints, negative reviews, or disparaging comments. The Employee shall not identify themselves as an employee of the Company on personal social media without prior written management approval. Any social media activity that references the Company must be approved in advance.`,
+
+            `CLAUSE 12: ESCALATION AND CUMULATIVE PENALTIES\n\n12.1 Escalation for Repeated Policy Violations: For policy violations not otherwise specified in Clauses 9-11, the following escalating penalties apply: (a) First violation: Written warning (b) Second violation: 100,000 UGX fine (c) Third violation: 250,000 UGX fine (d) Fourth violation: Termination\n\n12.2 Cumulative Penalties: Penalties for different breaches may be imposed cumulatively. Multiple breaches may result in total penalties exceeding individual amounts.\n\n12.3 Documentation: All penalties shall be documented in writing and maintained in the Employee's personnel file.`,
+
+            `CLAUSE 13: SURVIVAL OF OBLIGATIONS\n\nThe following provisions shall survive termination of this Agreement for any reason whatsoever and remain in full force and effect indefinitely:\n- (a) Confidentiality obligations (Clause 10.2);\n- (b) Non-compete obligations (Clause 14);\n- (c) Non-solicitation obligations (Clause 15);\n- (d) Customer protection obligations (Clause 16);\n- (e) Intellectual property provisions (Clause 17);\n- (f) Financial penalties and fines (Clauses 8-12);\n- (g) Post-employment fraud recovery (Clause 8.4).\n\nThe Employee acknowledges that these surviving obligations are essential to protect the legitimate business interests of the Company and that breach of any surviving obligation after termination may result in legal proceedings and financial liability.`,
+
+            `CLAUSE 14: NON-COMPETE COVENANT\n\n14.1 Restriction: For a period of twelve (12) months after the cessation of employment for any reason, the Employee shall not, directly or indirectly, alone or jointly with others, engage in any business that competes with the Company within a radius of twenty (20) kilometers of any Company location existing at the time of termination.\n\n14.2 Definition of Competing Business: "Competing business" means any business that sells clothing, footwear, accessories, or similar merchandise of the type sold by the Company during the Employment Period.\n\n14.3 Prohibited Activities: Prohibited activities include, but are not limited to: (a) Working as an employee, consultant, director, or contractor for a competing business; (b) Owning an interest in a competing business (excluding ownership of less than 1% of publicly traded securities); (c) Assisting any person or entity in competing with the Company.\n\n14.4 Acknowledgment: The Employee acknowledges that: (a) This restriction is reasonable and necessary to protect the Company's legitimate business interests; (b) The Company's business is conducted throughout the specified radius; (c) The Employee has access to Confidential Information that would provide an unfair advantage to competitors; (d) The Employee has received valuable consideration for this restriction, including employment and access to Confidential Information.\n\n14.5 Remedy for Breach: In addition to any other remedies available, the Employee shall pay liquidated damages of 5,000,000 UGX for breach of this Clause, without prejudice to the Company's right to seek injunctive relief.`,
+
+            `CLAUSE 15: NON-SOLICITATION COVENANT\n\n15.1 Restriction: For a period of twenty-four (24) months after the cessation of employment for any reason, the Employee shall not, directly or indirectly: (a) Solicit, induce, or attempt to solicit or induce any employee of the Company to leave their employment; (b) Hire or engage any person who was an employee of the Company within the preceding six months; (c) Solicit, contact, or do business with any customer of the Company with whom the Employee had contact during the Employment Period, for purposes of providing competing products or services; (d) Encourage any customer to reduce or cease doing business with the Company.\n\n15.2 Customer List: The Employee acknowledges that customer lists and customer information constitute Confidential Information and agrees not to use or disclose such information for any purpose after termination.\n\n15.3 Remedy for Breach: In addition to any other remedies available, the Employee shall pay liquidated damages of 5,000,000 UGX for breach of this Clause, without prejudice to the Company's right to seek injunctive relief.`,
+
+            `CLAUSE 16: CUSTOMER RELATIONSHIP PROTECTION\n\n16.1 Acknowledgment: The Employee acknowledges that all customer relationships, goodwill, and customer information developed during employment belong exclusively to the Company.\n\n16.2 Transition Obligations: Upon resignation or notice of termination, the Employee shall: (a) Provide a complete list of all customers they have served during the Employment Period; (b) Document customer preferences, sizes, purchase history, and any other relevant information; (c) Participate in joint meetings with replacement staff to introduce customers and facilitate smooth transition; (d) Not indicate to customers that they are leaving or suggest where they are going.\n\n16.3 Post-Employment Restriction: For six (6) months after employment ends, the Employee shall not: (a) Solicit or contact any Company customer they served during the Employment Period; (b) Indicate to customers that they have left the Company or suggest that customers should follow them to any other business; (c) Use customer information for any purpose.\n\n16.4 Remedy for Breach: Breach of this Clause shall incur a penalty of 3,000,000 UGX plus damages of 500,000 UGX for each customer solicited, and the Company may seek injunctive relief to prevent ongoing breach.`,
+
+            `CLAUSE 17: INTELLECTUAL PROPERTY\n\n17.1 Assignment: The Employee hereby assigns to the Company all right, title, and interest in and to any Intellectual Property created, conceived, or developed by the Employee, alone or jointly with others, during the Employment Period that: (a) Relates to the Company's business or actual or demonstrably anticipated research or development; or (b) Results from any work performed by the Employee for the Company; or (c) Is developed using the Company's resources, facilities, or Confidential Information.\n\n17.2 Definition: "Intellectual Property" includes, but is not limited to: inventions, improvements, innovations, discoveries, designs, methods, processes, techniques, computer programs, databases, business methods, marketing concepts, trademarks, trade secrets, and copyrightable works.\n\n17.3 No Additional Compensation: The Employee acknowledges that they have received adequate consideration for this assignment through their employment and compensation, and no additional compensation shall be payable.\n\n17.4 Further Assurances: The Employee agrees to execute any documents and take any actions reasonably requested by the Company to perfect, protect, or enforce the Company's rights in such Intellectual Property.`,
+
+            `CLAUSE 18: CUSTOMER SERVICE STANDARDS\n\n18.1 Required Conduct: The Employee must at all times: (a) Treat every customer with courtesy, respect, and professionalism; (b) Greet every customer promptly upon entry; (c) Offer assistance and ensure customer questions are answered accurately; (d) Attempt to upsell on every transaction by suggesting additional items, accessories, or premium alternatives; (e) Ensure each customer has an exceptional shopping experience.\n\n18.2 Prohibited Conduct: The Employee shall not engage in rude, dismissive, unhelpful, or disrespectful behavior toward any customer.\n\n18.3 Penalties: Violation of this Clause shall result in: (a) First offense: Written warning and/or 200,000 UGX fine; (b) Subsequent offenses: Increasing penalties up to and including termination.`,
+
+            `CLAUSE 19: STORE OPERATIONS AND STANDARDS\n\n19.1 Appearance and Grooming: (a) The Employee must maintain impeccable personal appearance and hygiene. (b) The full Company uniform must be worn correctly at all times while on duty. (c) Uniforms must be clean, pressed, and complete with name badge. (d) Personal appearance must be professional and consistent with the Company's brand image. (e) Violations: 50,000 UGX fine per incident.\n\n19.2 Visual Merchandising: (a) The Employee must maintain displays as attractive, organized, and fully stocked. (b) Displays must be updated according to current promotions and seasonal themes. (c) The Employee must regularly walk the sales floor to ensure standards are maintained. (d) Poor presentation affecting sales: 100,000 UGX fine per occurrence.\n\n19.3 Cleanliness: (a) The store must be kept clean and tidy at all times. (b) Employees are responsible for cleaning during shifts. (c) Cleaning duties include dusting, sweeping, organizing merchandise, and ensuring fitting rooms are tidy. (d) Violations: 50,000 UGX fine per violation.\n\n19.4 Inventory Management: (a) The Employee must follow all inventory procedures including accurate counting, proper storage, and timely reporting of discrepancies. (b) The Employee must participate in regular inventory counts. (c) Damaged or missing items must be reported immediately. (d) Inventory errors causing losses: fines proportional to loss amount, with minimum fine of 200,000 UGX.\n\n19.5 Security: (a) The Employee must follow all security procedures, including monitoring customers for shoplifting, securing cash and inventory, and reporting suspicious activity. (b) Opening and closing procedures must be followed precisely. (c) Security breach due to negligence: 1,000,000 UGX fine and possible termination.\n\n19.6 Cash Handling: (a) All cash transactions must follow strict procedures. (b) The Employee must count their till at the beginning and end of each shift. (c) Discrepancies must be reported immediately. (d) Till shortages exceeding 10,000 UGX must be reimbursed within 24 hours. (e) Repeated shortages: 250,000 UGX fine and possible termination.`,
+
+            `CLAUSE 20: DISCRETIONARY BENEFITS\n\n20.1 Employee Discount: (a) Employees in good standing receive a ten percent (10%) discount on merchandise purchased for personal use. (b) Discount is capped at a maximum discounted value of 400,000 UGX per month. (c) Discount must be applied at the time of purchase with manager approval and recorded in the employee discount log. (d) Abuse of the discount privilege shall result in immediate revocation and disciplinary action under Clause 9.\n\n20.2 Performance Rewards: (a) The Company may, at its sole discretion, award performance-based rewards including shopping sprees, bonuses, or other incentives. (b) Rewards are based on criteria determined by the Company, including sales performance, attendance, customer feedback, and overall contribution. (c) No Employee has any entitlement to any reward, and the Company may modify or discontinue any reward program at any time without notice.\n\n20.3 Referral Program: (a) Employees who refer successful new hires may receive a bonus of 50,000 UGX after the referred employee completes three (3) months of satisfactory employment. (b) The Company reserves the right to modify or discontinue the referral program at any time.`,
+
+            `CLAUSE 21: ACKNOWLEDGMENT AND ACCEPTANCE\n\n21.1 Acknowledgment: The Employee acknowledges that they have: (a) Read this entire Agreement carefully and completely; (b) Had sufficient opportunity to ask questions about any provision; (c) Been advised of their right to seek independent legal advice; (d) Either obtained such advice or voluntarily waived the right to do so; (e) Understood all terms, including all financial penalties; (f) Voluntarily accepted all terms without coercion.\n\n21.2 Binding Effect: The Employee agrees that this Agreement is legally binding and enforceable. Ignorance of any clause shall not be a defense against enforcement.\n\n21.3 Non-Repudiation: The Employee agrees that they cannot later deny, dispute, or repudiate that this Agreement was voluntarily entered into or that their electronic signature is valid and binding.`,
+
+            `CLAUSE 22: ELECTRONIC SIGNATURE AND NON-REPUDIATION\n\n22.1 Electronic Signature Consent: The Employee expressly agrees that their typed name, when submitted through the Company's electronic signature process, constitutes their official electronic signature under the Uganda Electronic Signatures Act, 2011.\n\n22.2 Legal Effect: The Employee acknowledges that this electronic signature has the same legal force and effect as a handwritten signature and creates a legally binding agreement.\n\n22.3 Non-Repudiation: The Employee waives any right to claim that: (a) This electronic signature is not valid or binding; (b) They did not authorize this signature; (c) They did not read or understand the Agreement; (d) They were coerced or improperly influenced to sign; (e) The electronic record is not admissible as evidence.\n\n22.4 Evidence: The Company may use the electronic record, including timestamp, IP address, device information, and confirmation checkboxes, as conclusive evidence of the Employee's agreement in any legal proceedings.`,
+
+            `CLAUSE 23: DISPUTE RESOLUTION\n\n23.1 Company's Choice of Forum: The Company shall have the sole and exclusive right to elect the forum for resolving any dispute arising out of or relating to this Agreement, including any question regarding its existence, validity, interpretation, breach, or termination.\n\n23.2 Options: The Company may elect either: (a) The courts of law of the Republic of Uganda; or (b) Binding arbitration in Kampala, Uganda, conducted in accordance with the Arbitration and Conciliation Act, Cap 4 of the Laws of Uganda.\n\n23.3 Arbitration Procedure: If the Company elects arbitration: (a) The arbitrator shall be appointed by the Company. (b) The arbitration shall be conducted in English. (c) The arbitrator's decision shall be final and binding on both parties. (d) Judgment upon the award may be entered in any court having jurisdiction.\n\n23.4 Costs: The prevailing party shall be entitled to recover its reasonable legal fees, arbitration costs, expert witness fees, and all related expenses from the non-prevailing party.\n\n23.5 Waiver: The Employee irrevocably submits to the jurisdiction of the Ugandan courts and waives any objection based on inconvenient forum or lack of personal jurisdiction.`,
+
+            `CLAUSE 24: NOTICES\n\n24.1 Method: Any notice required or permitted under this Agreement shall be in writing and shall be deemed effectively given: (a) When delivered personally; (b) When sent by registered mail, return receipt requested; (c) When sent by email with confirmed receipt.\n\n24.2 Addresses: Notices to the Company shall be sent to its registered address. Notices to the Employee shall be sent to the address or email provided in Schedule A or as updated by the Employee in writing.\n\n24.3 Employee's Obligation to Update: The Employee must immediately notify the Company in writing of any change to their contact information.`,
+
+            `CLAUSE 25: AMENDMENTS AND WAIVERS\n\n25.1 Amendments: No amendment to this Agreement shall be effective unless in writing and signed by both parties. However, the Company may unilaterally amend policies, procedures, Sales Targets, and discretionary programs with reasonable notice to the Employee.\n\n25.2 Waivers: No waiver of any provision shall be effective unless in writing and signed by the party granting the waiver. No waiver of any breach shall constitute a waiver of any subsequent breach.\n\n25.3 Cumulative Remedies: All remedies provided in this Agreement are cumulative and not exclusive of any other remedies available at law or in equity.`
         ];
 
+        // Save clauses
         localStorage.setItem('jeans_club_clauses', JSON.stringify(contractClauses));
 
         // ============================================
@@ -1373,16 +1318,8 @@
         let signatureData = null;
         let customDurationDays = null;
         
-        let contractDuration = JSON.parse(localStorage.getItem('contract_duration')) || {
-            value: 12,
-            unit: 'months'
-        };
-        
-        let managerSignature = JSON.parse(localStorage.getItem('manager_signature')) || {
-            name: "Mr. Abaho",
-            title: "SHOP EXECUTIVE"
-        };
-
+        let contractDuration = JSON.parse(localStorage.getItem('contract_duration')) || { value: 12, unit: 'months' };
+        let managerSignature = JSON.parse(localStorage.getItem('manager_signature')) || { name: "Mr. Abaho", title: "SHOP EXECUTIVE" };
         const MANAGER_PASSWORD = "JEANS2024";
 
         // ============================================
@@ -1434,18 +1371,33 @@
             }
         }
 
+        function showVerificationPage() {
+            document.getElementById('role-screen').style.display = 'none';
+            document.getElementById('worker-form').style.display = 'none';
+            document.getElementById('manager-password').style.display = 'none';
+            document.getElementById('manager-editor').style.display = 'none';
+            document.getElementById('verification-page').style.display = 'block';
+            
+            document.getElementById('verification-result').innerHTML = `
+                <div style="text-align: center;">
+                    <h2 style="color: #1a2f3f;">🔍 CONTRACT VERIFICATION</h2>
+                    <p style="margin: 20px 0;">Enter Contract ID or scan QR code</p>
+                    <input type="text" id="contract-id-input" placeholder="Enter Contract ID" style="width: 100%; padding: 15px; border: 2px solid #f39c12; border-radius: 8px;">
+                    <button onclick="verifyManually()" style="background: #f39c12; padding: 15px 30px; width: 100%; margin-top: 20px;">VERIFY</button>
+                    <p style="margin-top: 20px;">Demo: Try "JCC-DEMO-ACTIVE" or "JCC-DEMO-EXPIRED"</p>
+                </div>
+            `;
+        }
+
         // ============================================
-        // DURATION SELECTION FUNCTIONS
+        // DURATION FUNCTIONS
         // ============================================
         function updateDurationDisplay() {
             const selected = document.querySelector('input[name="contract-duration"]:checked');
             const display = document.getElementById('duration-text');
             if (!display) return;
             
-            if (!selected) {
-                display.innerText = '12 Months (Default)';
-                return;
-            }
+            if (!selected) { display.innerText = '12 Months (Default)'; return; }
             
             switch(selected.value) {
                 case '3_months': display.innerText = '3 Months'; break;
@@ -1455,11 +1407,7 @@
                 case '24_months': display.innerText = '24 Months'; break;
                 case 'permanent': display.innerText = 'Permanent'; break;
                 case 'custom': 
-                    if (customDurationDays) {
-                        display.innerText = `${customDurationDays} Days (Custom)`;
-                    } else {
-                        display.innerText = 'Custom (enter days)';
-                    }
+                    display.innerText = customDurationDays ? `${customDurationDays} Days` : 'Custom';
                     break;
             }
         }
@@ -1470,6 +1418,7 @@
                 customDurationDays = parseInt(days);
                 document.getElementById('custom-radio').checked = true;
                 updateDurationDisplay();
+                alert(`Custom duration set to ${days} days`);
             } else {
                 alert('Please enter valid days');
             }
@@ -1493,7 +1442,7 @@
         }
 
         // ============================================
-        // SIGNATURE FUNCTIONS - REMOVED ANNOYING POPUP
+        // SIGNATURE FUNCTIONS
         // ============================================
         function checkSignatureReady() {
             const name = document.getElementById('full-name').value;
@@ -1523,12 +1472,53 @@
                 timestamp: new Date().toISOString(),
                 ipAddress: '154.72.45.' + Math.floor(Math.random() * 255),
                 platform: navigator.platform,
-                workerName: name,
-                nonRepudiationStatement: "I, " + name + ", acknowledge this as my legally binding electronic signature."
+                workerName: name
             };
             
             document.getElementById('generateContractBtn').disabled = false;
             alert('✅ Electronic signature captured successfully');
+        }
+
+        // ============================================
+        // DOCUMENT UPLOAD
+        // ============================================
+        function handleFileSelect() {
+            const files = document.getElementById('file-input').files;
+            for (let file of files) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert(`File ${file.name} exceeds 5MB`);
+                    continue;
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedFiles.push({
+                        name: file.name,
+                        size: file.size,
+                        data: e.target.result,
+                        uploadDate: new Date().toISOString()
+                    });
+                    displayFileList();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function displayFileList() {
+            const fileList = document.getElementById('file-list');
+            fileList.innerHTML = '<h4>📎 Uploaded:</h4>';
+            uploadedFiles.forEach((file, index) => {
+                fileList.innerHTML += `
+                    <div class="file-item">
+                        <span>📄 ${file.name}</span>
+                        <span class="remove-file" onclick="removeFile(${index})">✖ REMOVE</span>
+                    </div>
+                `;
+            });
+        }
+
+        function removeFile(index) {
+            uploadedFiles.splice(index, 1);
+            displayFileList();
         }
 
         // ============================================
@@ -1561,6 +1551,14 @@
             const endDate = calculateEndDate(startDate);
             const contractId = 'JCC-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
             
+            // Get duration display
+            const duration = getSelectedDuration();
+            let durationDisplay = '';
+            if (duration.unit === 'months') durationDisplay = `${duration.value} Months`;
+            else if (duration.unit === 'days') durationDisplay = `${duration.value} Days`;
+            else if (duration.unit === 'years') durationDisplay = 'Permanent';
+            
+            // Build contract HTML
             let contractHTML = `
                 <div class="contract-header">
                     <div class="contract-header-left">
@@ -1581,17 +1579,43 @@
                     <p><strong>NATIONAL ID:</strong> ${nationalId}</p>
                     <p><strong>START DATE:</strong> ${new Date(startDate).toLocaleDateString()}</p>
                     <p><strong>EXPIRY DATE:</strong> ${new Date(endDate).toLocaleDateString()}</p>
+                    <p><strong>CONTRACT DURATION:</strong> ${durationDisplay}</p>
                     <p><strong>WEEKLY TARGET:</strong> 5,000,000 UGX</p>
                     <p><strong>PROBATION:</strong> 3 Months</p>
                 </div>
             `;
             
+            // Add emergency contact if provided
+            const emergencyName = document.getElementById('emergency-name').value;
+            const emergencyPhone = document.getElementById('emergency-phone').value;
+            const emergencyRelation = document.getElementById('emergency-relation').value;
+            
+            if (emergencyName) {
+                contractHTML += `
+                    <div style="background: #f0f0f0; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                        <p><strong>EMERGENCY CONTACT:</strong> ${emergencyName} (${emergencyRelation}) - ${emergencyPhone}</p>
+                    </div>
+                `;
+            }
+            
+            // Add signature info
+            if (signatureData) {
+                contractHTML += `
+                    <div style="background: #1a2f3f; color: white; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <p><strong>🔏 ELECTRONIC SIGNATURE</strong></p>
+                        <p>Signed by: <strong style="font-size: 24px;">${signatureData.signature}</strong></p>
+                        <p>Timestamp: ${new Date(signatureData.timestamp).toLocaleString()}</p>
+                        <p>IP: ${signatureData.ipAddress}</p>
+                    </div>
+                `;
+            }
+            
             // Add all clauses
             contractClauses.forEach(clause => {
-                contractHTML += `<div class="clause">${clause}</div>`;
+                contractHTML += `<div class="clause">${clause.replace(/\n/g, '<br>')}</div>`;
             });
             
-            // Signatures
+            // Add signatures
             contractHTML += `
                 <div style="margin-top: 50px; display: flex; justify-content: space-between;">
                     <div>
@@ -1607,50 +1631,330 @@
                 </div>
                 
                 <div class="qr-section">
-                    <h3>🔐 VERIFICATION QR CODE</h3>
+                    <h3>🔐 OFFICIAL VERIFICATION QR CODE</h3>
                     <div id="qrcode"></div>
+                    <div id="expiry-status" style="margin-top: 15px;"></div>
                 </div>
             `;
             
+            // Display contract
             document.getElementById('contract-preview').innerHTML = contractHTML;
             document.getElementById('contract-preview').style.display = 'block';
             
-            // Generate QR
-            generateQR(contractId, name, nationalId, startDate, endDate);
+            // Generate QR with all data
+            const contractData = {
+                id: contractId,
+                n: name,
+                ni: nationalId,
+                sd: startDate,
+                ed: endDate,
+                is: new Date().toISOString(),
+                si: signatureData ? { s: signatureData.signature, t: signatureData.timestamp, ip: signatureData.ipAddress } : null,
+                m: { n: managerSignature.name, t: managerSignature.title }
+            };
+            
+            generateQR(contractData);
+            
+            // Add expiry status
+            const today = new Date();
+            const end = new Date(endDate);
+            const daysRemaining = Math.ceil((end - today) / (1000 * 60 * 60 * 24));
+            const isExpired = today > end;
+            
+            document.getElementById('expiry-status').innerHTML = isExpired 
+                ? '<span class="expiry-badge badge-expired">❌ CONTRACT EXPIRED</span>'
+                : `<span class="expiry-badge badge-active">✅ CONTRACT ACTIVE (${daysRemaining} days remaining)</span>`;
+            
+            // Add share buttons
+            addShareButtons(contractId, name, email);
         }
 
-        function generateQR(id, name, nationalId, start, end) {
-            const qrData = { id, n: name, ni: nationalId, sd: start, ed: end };
-            const url = `${window.location.href.split('?')[0]}?verify=${encodeURIComponent(JSON.stringify(qrData))}`;
-            document.getElementById('qrcode').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}" style="border:3px solid #f39c12; border-radius:10px;">`;
+        function generateQR(contractData) {
+            const element = document.getElementById('qrcode');
+            element.innerHTML = '';
+            
+            const dataString = JSON.stringify(contractData);
+            const encodedData = encodeURIComponent(dataString);
+            const baseUrl = window.location.href.split('?')[0];
+            const verificationUrl = `${baseUrl}?verify=${encodedData}`;
+            
+            const qrImage = document.createElement('img');
+            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(verificationUrl)}`;
+            qrImage.style.border = '3px solid #f39c12';
+            qrImage.style.borderRadius = '10px';
+            element.appendChild(qrImage);
         }
 
         // ============================================
-        // HELPER FUNCTIONS (abbreviated)
+        // SHARE BUTTONS
         // ============================================
-        function displayClausePreviews() { /* ... */ }
-        function toggleClauses() { document.getElementById('clauses-preview-container').style.display = 'block'; }
-        function prepareContractForGeneration() { if (signatureData) generateContract(); else alert('Sign first'); }
-        function handleFileSelect() { /* ... */ }
-        function saveManagerSignature() { /* ... */ }
-        function loadManagerSettings() { /* ... */ }
-        function updateManagerDisplay() { /* ... */ }
-        function setDuration(v,u) { contractDuration = {value:v, unit:u}; localStorage.setItem('contract_duration', JSON.stringify(contractDuration)); }
-        function loadClausesForEditing() { /* ... */ }
-        function saveAllClauses() { /* ... */ }
-        function downloadMasterContract() { /* ... */ }
+        function addShareButtons(contractId, name, email) {
+            const previewDiv = document.getElementById('contract-preview');
+            
+            const shareDiv = document.createElement('div');
+            shareDiv.className = 'share-buttons';
+            shareDiv.innerHTML = `
+                <button class="share-btn whatsapp" onclick="shareViaWhatsApp('${contractId}', '${name}')">📱 WHATSAPP</button>
+                <button class="share-btn email" onclick="shareViaEmail('${contractId}', '${name}')">📧 EMAIL</button>
+                <button class="share-btn manager-email" onclick="sendToManager('${contractId}', '${name}')">📨 SEND TO MANAGER</button>
+                <button class="share-btn print-pdf" onclick="window.print()">📄 GENERATE PDF</button>
+                <button class="share-btn download" onclick="downloadContract()">💾 SAVE TO DEVICE</button>
+            `;
+            
+            previewDiv.appendChild(shareDiv);
+        }
 
-        // Event listeners
+        function shareViaWhatsApp(contractId, name) {
+            const baseUrl = window.location.href.split('?')[0];
+            const text = `JEANS CLUB CONTRACT\nEmployee: ${name}\nID: ${contractId}\nVerify: ${baseUrl}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function shareViaEmail(contractId, name) {
+            const baseUrl = window.location.href.split('?')[0];
+            const subject = `Jeans Club Contract - ${name}`;
+            const body = `Contract ID: ${contractId}\nVerify at: ${baseUrl}`;
+            window.open(`mailto:manager@jeansclub.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+        }
+
+        function sendToManager(contractId, name) {
+            const data = {
+                contractId, name,
+                documents: uploadedFiles,
+                signature: signatureData,
+                managerSignature
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `JEANS_CLUB_${name.replace(/\s+/g, '_')}.json`;
+            a.click();
+            alert('Contract data saved - send this file to manager');
+        }
+
+        function downloadContract() {
+            const content = document.getElementById('contract-preview').innerHTML;
+            const fullHTML = `
+                <!DOCTYPE html>
+                <html><head><style>
+                    body { font-family: 'Times New Roman', serif; padding: 40px; }
+                    .clause { margin: 15px 0; padding: 15px; border-left: 4px solid #f39c12; }
+                </style></head>
+                <body>${content}</body></html>
+            `;
+            const blob = new Blob([fullHTML], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `JEANS_CLUB_CONTRACT_${new Date().getTime()}.html`;
+            a.click();
+        }
+
+        // ============================================
+        // VERIFICATION FUNCTIONS
+        // ============================================
+        function verifyManually() {
+            const id = document.getElementById('contract-id-input')?.value || '';
+            if (id === 'JCC-DEMO-ACTIVE') showDemoVerification('active');
+            else if (id === 'JCC-DEMO-EXPIRED') showDemoVerification('expired');
+            else showManualVerification(id);
+        }
+
+        function showDemoVerification(type) {
+            const today = new Date();
+            const endDate = type === 'active' ? new Date(today.setMonth(today.getMonth() + 6)) : new Date(today.setMonth(today.getMonth() - 2));
+            const daysRemaining = type === 'active' ? 180 : Math.abs(Math.ceil((endDate - today) / (1000*60*60*24)));
+            const isExpired = type === 'expired';
+            
+            document.getElementById('verification-result').innerHTML = `
+                <div class="verification-header">
+                    <h1>JEANS CLUB (U) LTD</h1>
+                    <h2 style="color: #f39c12;">CONTRACT VERIFICATION</h2>
+                </div>
+                <div class="verification-seal">
+                    <div class="seal" style="background: ${isExpired ? '#e74c3c' : '#27ae60'};">${isExpired ? '!' : '✓'}</div>
+                    <h3 style="color: ${isExpired ? '#e74c3c' : '#27ae60'};">${isExpired ? 'CONTRACT EXPIRED' : 'CONTRACT ACTIVE'}</h3>
+                </div>
+                <div class="verification-section">
+                    <h3>📋 CONTRACT DETAILS</h3>
+                    <div class="verification-grid">
+                        <span class="verification-label">Contract ID:</span><span><strong>${type === 'active' ? 'JCC-DEMO-ACTIVE' : 'JCC-DEMO-EXPIRED'}</strong></span>
+                        <span class="verification-label">Status:</span><span>${isExpired ? '❌ EXPIRED' : `✅ ACTIVE (${daysRemaining} days)`}</span>
+                        <span class="verification-label">Issue Date:</span><span>1 January 2024</span>
+                        <span class="verification-label">Expiry Date:</span><span>${endDate.toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="verification-section">
+                    <h3>👤 EMPLOYEE (DEMO)</h3>
+                    <p><strong>John Doe</strong> (CM12345678)</p>
+                </div>
+                <div class="verification-section" style="background: #1a2f3f; color: white;">
+                    <h3 style="color: #f39c12;">✅ VERIFICATION COMPLETE</h3>
+                    <p>This contract is ${isExpired ? 'EXPIRED' : 'ACTIVE and VALID'}</p>
+                </div>
+                <button class="verification-btn print-btn" onclick="window.print()">🖨️ PRINT</button>
+                <button class="verification-btn share-btn-verify" onclick="showVerificationPage()">← BACK</button>
+            `;
+        }
+
+        function showManualVerification(id) {
+            document.getElementById('verification-result').innerHTML = `
+                <div style="text-align: center;">
+                    <div class="verification-seal"><div class="seal" style="background: #f39c12;">ℹ️</div></div>
+                    <h3>Manual Verification Required</h3>
+                    <p>Contract ID: <strong>${id}</strong></p>
+                    <p>Contact management to verify this contract</p>
+                    <button onclick="showVerificationPage()" style="background: #f39c12; padding: 10px 20px;">BACK</button>
+                </div>
+            `;
+        }
+
+        // ============================================
+        // MANAGER FUNCTIONS
+        // ============================================
+        function saveManagerSignature() {
+            managerSignature = {
+                name: document.getElementById('manager-name').value,
+                title: document.getElementById('manager-title').value
+            };
+            localStorage.setItem('manager_signature', JSON.stringify(managerSignature));
+            alert('Saved');
+        }
+
+        function loadManagerSettings() {
+            document.getElementById('manager-name').value = managerSignature.name;
+            document.getElementById('manager-title').value = managerSignature.title;
+        }
+
+        function setDuration(value, unit) {
+            contractDuration = { value, unit };
+            localStorage.setItem('contract_duration', JSON.stringify(contractDuration));
+            document.querySelectorAll('.duration-option').forEach(opt => opt.classList.remove('selected'));
+            event.target.classList.add('selected');
+            document.getElementById('current-duration-display').innerText = `${value} ${unit.toUpperCase()}`;
+        }
+
+        function displayClausePreviews() {
+            const container = document.getElementById('clauses-preview-container');
+            container.innerHTML = '<h4 style="color: #f39c12;">ALL 25 CLAUSES - FULL TEXT</h4>';
+            contractClauses.forEach(clause => {
+                container.innerHTML += `<div class="clause-mini"><strong>${clause.split('\n')[0]}</strong><br>${clause.substring(0, 200)}...</div>`;
+            });
+        }
+
+        function toggleClauses() {
+            const container = document.getElementById('clauses-preview-container');
+            container.style.display = container.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function prepareContractForGeneration() {
+            if (!signatureData) alert('Please sign first');
+            else generateContract();
+        }
+
+        function loadClausesForEditing() {
+            const container = document.getElementById('clauses-container');
+            container.innerHTML = '';
+            contractClauses.forEach((clause, i) => {
+                container.innerHTML += `
+                    <div class="clause-editor-item">
+                        <strong>CLAUSE ${i+1}</strong>
+                        <textarea id="clause-${i}" rows="8">${clause}</textarea>
+                        <button class="save-clause-btn" onclick="saveClause(${i})">SAVE</button>
+                    </div>
+                `;
+            });
+        }
+
+        function saveClause(i) {
+            contractClauses[i] = document.getElementById(`clause-${i}`).value;
+            localStorage.setItem('jeans_club_clauses', JSON.stringify(contractClauses));
+            alert(`Clause ${i+1} saved`);
+        }
+
+        function saveAllClauses() {
+            for (let i = 0; i < contractClauses.length; i++) {
+                const ta = document.getElementById(`clause-${i}`);
+                if (ta) contractClauses[i] = ta.value;
+            }
+            localStorage.setItem('jeans_club_clauses', JSON.stringify(contractClauses));
+            alert('All clauses saved');
+        }
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('full-name')?.addEventListener('input', checkSignatureReady);
             document.getElementById('national-id')?.addEventListener('input', checkSignatureReady);
             document.querySelectorAll('input[name="contract-duration"]').forEach(r => r.addEventListener('change', updateDurationDisplay));
+            
+            // Check URL for verification
+            const urlParams = new URLSearchParams(window.location.search);
+            const verifyData = urlParams.get('verify');
+            if (verifyData) {
+                try {
+                    const data = JSON.parse(decodeURIComponent(verifyData));
+                    showVerificationFromData(data);
+                } catch (e) {
+                    showRoleScreen();
+                }
+            } else {
+                showRoleScreen();
+            }
+            
+            updateManagerDisplay();
+            console.log('✅ System ready - 25 full clauses, share buttons, verification card');
         });
 
-        // Initialize
-        showRoleScreen();
-        updateManagerDisplay();
-        console.log('✅ System ready - Workers can choose duration, brand image added, annoying popup removed');
+        function showVerificationFromData(data) {
+            document.getElementById('role-screen').style.display = 'none';
+            document.getElementById('verification-page').style.display = 'block';
+            
+            const today = new Date();
+            const endDate = new Date(data.ed);
+            const daysRemaining = Math.ceil((endDate - today) / (1000*60*60*24));
+            const isExpired = today > endDate;
+            
+            document.getElementById('verification-result').innerHTML = `
+                <div class="verification-header">
+                    <h1>JEANS CLUB (U) LTD</h1>
+                    <h2 style="color: #f39c12;">OFFICIAL VERIFICATION</h2>
+                </div>
+                <div class="verification-seal">
+                    <div class="seal" style="background: ${isExpired ? '#e74c3c' : '#27ae60'};">${isExpired ? '!' : '✓'}</div>
+                    <h3 style="color: ${isExpired ? '#e74c3c' : '#27ae60'};">${isExpired ? 'CONTRACT EXPIRED' : 'CONTRACT ACTIVE'}</h3>
+                </div>
+                <div class="verification-section">
+                    <h3>📋 CONTRACT DETAILS</h3>
+                    <div class="verification-grid">
+                        <span class="verification-label">ID:</span><span><strong>${data.id}</strong></span>
+                        <span class="verification-label">Status:</span><span>${isExpired ? '❌ EXPIRED' : `✅ ACTIVE (${daysRemaining} days)`}</span>
+                        <span class="verification-label">Issued:</span><span>${new Date(data.is).toLocaleDateString()}</span>
+                        <span class="verification-label">Start:</span><span>${new Date(data.sd).toLocaleDateString()}</span>
+                        <span class="verification-label">Expiry:</span><span>${new Date(data.ed).toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="verification-section">
+                    <h3>👤 EMPLOYEE</h3>
+                    <p><strong>${data.n}</strong> (${data.ni})</p>
+                </div>
+                <div class="verification-section">
+                    <h3>🔏 SIGNATURES</h3>
+                    <div class="signature-box"><p>Employee: ${data.si ? data.si.s : 'N/A'}</p><p style="font-size:12px;">${data.si ? new Date(data.si.t).toLocaleString() : ''}</p></div>
+                    <div class="signature-box"><p>Manager: ${data.m.n} (${data.m.t})</p></div>
+                </div>
+                <div class="legal-footer">Verified on ${new Date().toLocaleString()}</div>
+                <button class="verification-btn print-btn" onclick="window.print()">🖨️ PRINT</button>
+                <button class="verification-btn share-btn-verify" onclick="showRoleScreen()">🏠 HOME</button>
+            `;
+        }
+
+        function updateManagerDisplay() {
+            const display = document.getElementById('current-manager-display');
+            if (display) display.innerText = `${managerSignature.name} (${managerSignature.title})`;
+        }
     </script>
 </body>
 </html>
