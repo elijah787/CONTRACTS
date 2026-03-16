@@ -497,22 +497,47 @@
         }
 
         .contract-header {
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 2px solid #f39c12;
         }
 
-        .contract-header h1 {
+        .contract-header-left {
+            flex: 1;
+        }
+
+        .contract-header-left h1 {
             color: #1a2f3f;
             font-size: clamp(20px, 4vw, 28px);
             letter-spacing: 2px;
+            margin-bottom: 5px;
         }
 
-        .contract-header h2 {
+        .contract-header-left h2 {
             color: #f39c12;
-            margin: 10px 0;
+            margin: 5px 0;
             font-size: clamp(16px, 3vw, 20px);
+        }
+
+        .contract-header-left p {
+            color: #666;
+            margin: 3px 0;
+        }
+
+        .contract-header-right {
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+        .contract-header-right img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            border: 3px solid #f39c12;
+            object-fit: cover;
         }
 
         .worker-details-box {
@@ -1014,6 +1039,10 @@
                 <h2>OFFICIAL CONTRACT MANAGEMENT SYSTEM</h2>
                 <p>Established 2010 • Registered under Ugandan Law • All contracts legally binding</p>
             </div>
+            <!-- Right side clickable image placeholder -->
+            <a href="#" target="_blank" style="margin-left: 15px;">
+                <img src="placeholder-image.jpg" alt="Clickable Image" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #f39c12; cursor: pointer; display: none;">
+            </a>
         </div>
 
         <!-- Role Selection Screen -->
@@ -1047,11 +1076,68 @@
                         <input type="tel" id="phone" placeholder="Phone Number (Ugandan)" required>
                         <input type="text" id="national-id" placeholder="National ID Number" required>
                         
-                        <!-- IMPROVED START DATE FIELD WITH CLEAR LABEL -->
+                        <!-- START DATE FIELD -->
                         <div class="date-field full-width">
                             <label for="start-date">📅 EMPLOYMENT START DATE (First day of work)</label>
                             <input type="date" id="start-date" required>
                             <small>⚠️ This is your FIRST DAY OF WORK, not your birth date. Select the date you will begin employment.</small>
+                        </div>
+                        
+                        <!-- CONTRACT DURATION SELECTION - Worker chooses! -->
+                        <div class="full-width" style="margin-top: 20px; padding: 20px; background: #fff3e0; border-radius: 10px; border: 2px solid #f39c12;">
+                            <h4 style="color: #1a2f3f; margin-bottom: 15px; font-size: 18px;">📅 CHOOSE YOUR CONTRACT DURATION</h4>
+                            <p style="color: #666; margin-bottom: 15px; font-style: italic;">Select how long you want your contract to last. This determines your expiry date.</p>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 20px;">
+                                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; background: white; border-radius: 8px; border: 2px solid #e0e0e0; cursor: pointer;">
+                                    <input type="radio" name="contract-duration" value="3_months" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span style="font-weight: bold;">3 Months</span>
+                                </label>
+                                
+                                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; background: white; border-radius: 8px; border: 2px solid #e0e0e0; cursor: pointer;">
+                                    <input type="radio" name="contract-duration" value="6_months" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span style="font-weight: bold;">6 Months</span>
+                                </label>
+                                
+                                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #f39c12; border-radius: 8px; border: 2px solid #1a2f3f; cursor: pointer;">
+                                    <input type="radio" name="contract-duration" value="12_months" checked style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span style="font-weight: bold;">12 Months <span style="color: #1a2f3f;">(Recommended)</span></span>
+                                </label>
+                                
+                                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; background: white; border-radius: 8px; border: 2px solid #e0e0e0; cursor: pointer;">
+                                    <input type="radio" name="contract-duration" value="18_months" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span style="font-weight: bold;">18 Months</span>
+                                </label>
+                                
+                                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; background: white; border-radius: 8px; border: 2px solid #e0e0e0; cursor: pointer;">
+                                    <input type="radio" name="contract-duration" value="24_months" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span style="font-weight: bold;">24 Months</span>
+                                </label>
+                                
+                                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; background: white; border-radius: 8px; border: 2px solid #e0e0e0; cursor: pointer;">
+                                    <input type="radio" name="contract-duration" value="permanent" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span style="font-weight: bold;">Permanent</span>
+                                </label>
+                            </div>
+                            
+                            <!-- CUSTOM DURATION OPTION -->
+                            <div style="margin-top: 20px; padding-top: 20px; border-top: 2px dashed #f39c12;">
+                                <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                    <input type="radio" name="contract-duration" value="custom" id="custom-radio" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span style="font-weight: bold; color: #1a2f3f;">Custom Duration (enter specific days)</span>
+                                </label>
+                                
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <input type="number" id="custom-days" placeholder="Enter number of days" min="1" style="flex: 1; padding: 12px; border: 2px solid #f39c12; border-radius: 8px; font-size: 16px;">
+                                    <button type="button" onclick="setCustomDuration()" style="background: #1a2f3f; color: white; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">APPLY CUSTOM</button>
+                                </div>
+                                <small style="display: block; color: #e74c3c; font-size: 12px; margin-top: 10px;">⚠️ If using custom, click APPLY CUSTOM after entering days</small>
+                            </div>
+                            
+                            <!-- Live display of selected duration -->
+                            <div id="selected-duration-display" style="margin-top: 20px; padding: 15px; background: #1a2f3f; color: white; border-radius: 8px; text-align: center; font-weight: bold;">
+                                Currently selected: <span id="duration-text">12 Months (Recommended)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1193,25 +1279,25 @@
             <div class="manager-editor">
                 <h2 style="color: #1a2f3f; margin-bottom: 20px;">✏️ MASTER CONTRACT ADMINISTRATION</h2>
                 
-                <!-- Manager Signature Settings -->
+                <!-- Manager Signature Settings - Default changed to Mr. Abaho -->
                 <div class="manager-signature-settings">
                     <h3>👔 MANAGER SIGNATURE CONFIGURATION</h3>
                     <p style="margin-bottom: 15px; color: #f39c12;">Set the manager name that will appear on ALL NEW contracts</p>
                     
                     <label style="color: white; display: block; margin-bottom: 5px;">Manager Full Name:</label>
-                    <input type="text" id="manager-name" placeholder="e.g., Mr. John Smith" value="Mr. John Smith">
+                    <input type="text" id="manager-name" placeholder="e.g., Mr. Abaho" value="Mr. Abaho">
                     
                     <label style="color: white; display: block; margin-bottom: 5px; margin-top: 15px;">Manager Title/Position:</label>
-                    <input type="text" id="manager-title" placeholder="e.g., Store Manager - Kampala Road" value="SHOP EXECUTIVE">
+                    <input type="text" id="manager-title" placeholder="e.g., Store Manager" value="SHOP EXECUTIVE">
                     
                     <button onclick="saveManagerSignature()">💾 SAVE MANAGER SIGNATURE</button>
-                    <p style="color: #f39c12; font-size: 12px; margin-top: 10px;">Current manager: <span id="current-manager-display">Mr. John Smith (SHOP EXECUTIVE)</span></p>
+                    <p style="color: #f39c12; font-size: 12px; margin-top: 10px;">Current manager: <span id="current-manager-display">Mr. Abaho (SHOP EXECUTIVE)</span></p>
                 </div>
                 
-                <!-- Contract Duration Settings -->
+                <!-- Contract Duration Settings (Now optional - workers choose) -->
                 <div class="duration-settings">
-                    <h3>⚙️ CONTRACT DURATION CONFIGURATION</h3>
-                    <p style="margin-bottom: 15px; color: #666;">Set the default contract length for ALL NEW workers. This does not affect existing contracts.</p>
+                    <h3>⚙️ CONTRACT DURATION CONFIGURATION (OPTIONAL)</h3>
+                    <p style="margin-bottom: 15px; color: #666;">These settings are now OPTIONAL. Workers can choose their own duration during registration. This sets the default if worker doesn't select.</p>
                     
                     <div class="duration-grid">
                         <div class="duration-option" onclick="setDuration(3, 'months')">
@@ -1236,7 +1322,7 @@
                     </div>
                     
                     <div style="margin-top: 20px; padding: 15px; background: #1a2f3f; color: white; border-radius: 8px;">
-                        <strong>CURRENT SETTING:</strong> <span id="current-duration-display">12 MONTHS</span> — This applies to ALL NEW contracts generated from now.
+                        <strong>DEFAULT SETTING (fallback):</strong> <span id="current-duration-display">12 MONTHS</span> — Used only if worker doesn't select their own duration.
                     </div>
                 </div>
 
@@ -1613,17 +1699,20 @@ The Employee acknowledges that these surviving obligations are essential to prot
         let uploadedFiles = [];
         let signatureData = null;
         
-        // Contract duration settings
+        // Contract duration settings (now used as fallback only)
         let contractDuration = JSON.parse(localStorage.getItem('contract_duration')) || {
             value: 12,
             unit: 'months'
         };
         
-        // Manager signature settings
+        // Manager signature settings - DEFAULT CHANGED TO MR. ABAHO
         let managerSignature = JSON.parse(localStorage.getItem('manager_signature')) || {
-            name: "Mr. John Smith",
+            name: "Mr. Abaho",
             title: "SHOP EXECUTIVE"
         };
+
+        // Custom duration storage
+        let customDurationDays = null;
 
         // Manager password
         const MANAGER_PASSWORD = "JEANS2024";
@@ -1687,6 +1776,10 @@ The Employee acknowledges that these surviving obligations are essential to prot
             document.getElementById('executeSignatureBtn').disabled = true;
             document.getElementById('generateContractBtn').disabled = true;
             signatureData = null;
+            customDurationDays = null;
+            
+            // Update duration display
+            updateSelectedDurationDisplay();
         }
 
         function promptManagerPassword() {
@@ -1760,6 +1853,92 @@ The Employee acknowledges that these surviving obligations are essential to prot
             if (display) {
                 display.innerText = `${managerSignature.name} (${managerSignature.title})`;
             }
+        }
+
+        // ============================================
+        // WORKER DURATION SELECTION FUNCTIONS
+        // ============================================
+        function updateSelectedDurationDisplay() {
+            const selected = document.querySelector('input[name="contract-duration"]:checked');
+            const displaySpan = document.getElementById('duration-text');
+            
+            if (!displaySpan) return;
+            
+            if (!selected) {
+                displaySpan.innerText = 'None selected';
+                return;
+            }
+            
+            const value = selected.value;
+            
+            switch(value) {
+                case '3_months':
+                    displaySpan.innerText = '3 Months';
+                    break;
+                case '6_months':
+                    displaySpan.innerText = '6 Months';
+                    break;
+                case '12_months':
+                    displaySpan.innerText = '12 Months (Recommended)';
+                    break;
+                case '18_months':
+                    displaySpan.innerText = '18 Months';
+                    break;
+                case '24_months':
+                    displaySpan.innerText = '24 Months';
+                    break;
+                case 'permanent':
+                    displaySpan.innerText = 'Permanent';
+                    break;
+                case 'custom':
+                    if (customDurationDays) {
+                        displaySpan.innerText = `${customDurationDays} Days (Custom)`;
+                    } else {
+                        displaySpan.innerText = 'Custom (enter days)';
+                    }
+                    break;
+                default:
+                    displaySpan.innerText = value;
+            }
+        }
+
+        function setCustomDuration() {
+            const days = document.getElementById('custom-days').value;
+            if (days && days > 0) {
+                customDurationDays = parseInt(days);
+                
+                // Check the custom radio button
+                document.getElementById('custom-radio').checked = true;
+                
+                updateSelectedDurationDisplay();
+                alert(`Custom duration set to ${days} days. Remember to click the Custom radio button if not already selected.`);
+            } else {
+                alert('Please enter a valid number of days');
+            }
+        }
+
+        function getSelectedDuration() {
+            const selected = document.querySelector('input[name="contract-duration"]:checked');
+            
+            if (!selected) {
+                // Fallback to manager settings
+                return contractDuration;
+            }
+            
+            const value = selected.value;
+            
+            if (value === '3_months') return { value: 3, unit: 'months' };
+            if (value === '6_months') return { value: 6, unit: 'months' };
+            if (value === '12_months') return { value: 12, unit: 'months' };
+            if (value === '18_months') return { value: 18, unit: 'months' };
+            if (value === '24_months') return { value: 24, unit: 'months' };
+            if (value === 'permanent') return { value: 99, unit: 'years' }; // 99 years as "permanent"
+            if (value === 'custom' && customDurationDays) {
+                return { value: customDurationDays, unit: 'days' };
+            }
+            
+            // Fallback
+            return contractDuration;
         }
 
         // ============================================
@@ -1957,7 +2136,7 @@ The Employee acknowledges that these surviving obligations are essential to prot
         }
 
         // ============================================
-        // CONTRACT DURATION MANAGEMENT
+        // CONTRACT DURATION MANAGEMENT (Manager settings - fallback only)
         // ============================================
         function setDuration(value, unit) {
             contractDuration = { value: value, unit: unit };
@@ -1968,7 +2147,7 @@ The Employee acknowledges that these surviving obligations are essential to prot
             event.target.classList.add('selected');
         }
 
-        function setCustomDuration() {
+        function setCustomDurationManager() {
             const days = document.getElementById('custom-duration').value;
             if (days && days > 0) {
                 contractDuration = { value: parseInt(days), unit: 'days' };
@@ -1997,10 +2176,15 @@ The Employee acknowledges that these surviving obligations are essential to prot
             const start = new Date(startDate);
             const end = new Date(start);
             
-            if (contractDuration.unit === 'months') {
-                end.setMonth(end.getMonth() + contractDuration.value);
-            } else if (contractDuration.unit === 'days') {
-                end.setDate(end.getDate() + contractDuration.value);
+            // Get worker's selected duration
+            const selectedDuration = getSelectedDuration();
+            
+            if (selectedDuration.unit === 'months') {
+                end.setMonth(end.getMonth() + selectedDuration.value);
+            } else if (selectedDuration.unit === 'days') {
+                end.setDate(end.getDate() + selectedDuration.value);
+            } else if (selectedDuration.unit === 'years') {
+                end.setFullYear(end.getFullYear() + selectedDuration.value);
             }
             
             return end.toISOString().split('T')[0];
@@ -2277,7 +2461,7 @@ The Employee acknowledges that these surviving obligations are essential to prot
                 return;
             }
             
-            // Calculate end date
+            // Calculate end date using worker's selected duration
             const endDate = calculateEndDate(startDate);
             
             // Get optional fields
@@ -2292,13 +2476,29 @@ The Employee acknowledges that these surviving obligations are essential to prot
             // Generate unique contract ID
             const contractId = 'JCC-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
             
-            // Build contract HTML
+            // Get selected duration for display
+            const selectedDuration = getSelectedDuration();
+            let durationDisplay = '';
+            if (selectedDuration.unit === 'months') {
+                durationDisplay = `${selectedDuration.value} Months`;
+            } else if (selectedDuration.unit === 'days') {
+                durationDisplay = `${selectedDuration.value} Days`;
+            } else if (selectedDuration.unit === 'years') {
+                durationDisplay = 'Permanent';
+            }
+            
+            // Build contract HTML with image on the right side
             let contractHTML = `
                 <div class="contract-header">
-                    <h1>JEANS CLUB (U) LTD</h1>
-                    <h2>EMPLOYMENT AGREEMENT</h2>
-                    <p style="color: #666;">Contract ID: <strong>${contractId}</strong></p>
-                    <p style="color: #666;">Issue Date: ${new Date().toLocaleDateString('en-UG', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
+                    <div class="contract-header-left">
+                        <h1>JEANS CLUB (U) LTD</h1>
+                        <h2>EMPLOYMENT AGREEMENT</h2>
+                        <p style="color: #666;">Contract ID: <strong>${contractId}</strong></p>
+                        <p style="color: #666;">Issue Date: ${new Date().toLocaleDateString('en-UG', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
+                    </div>
+                    <div class="contract-header-right">
+                        <img src="https://image2url.com/r2/default/images/1773640341878-2e921e50-3b60-4b29-b66d-c3a0b97214bf.jpeg" alt="Company Logo">
+                    </div>
                 </div>
                 
                 <div class="worker-details-box">
@@ -2308,7 +2508,7 @@ The Employee acknowledges that these surviving obligations are essential to prot
                     <p><strong>NATIONAL ID NUMBER:</strong> ${nationalId}</p>
                     <p><strong>COMMENCEMENT DATE:</strong> ${new Date(startDate).toLocaleDateString('en-UG', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
                     <p><strong>EXPIRY DATE:</strong> ${new Date(endDate).toLocaleDateString('en-UG', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
-                    <p><strong>CONTRACT DURATION:</strong> ${contractDuration.value} ${contractDuration.unit}</p>
+                    <p><strong>CONTRACT DURATION:</strong> ${durationDisplay}</p>
                     <p><strong>WEEKLY SALES TARGET:</strong> 5,000,000 UGX (Five Million Uganda Shillings)</p>
                     <p><strong>PROBATION PERIOD:</strong> 3 Months</p>
                 </div>
@@ -2558,9 +2758,20 @@ The Employee acknowledges that these surviving obligations are essential to prot
                             padding: 15px; 
                             border-radius: 5px; 
                         }
-                        .header { 
-                            text-align: center; 
-                            margin-bottom: 30px; 
+                        .contract-header { 
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-bottom: 30px;
+                        }
+                        .contract-header-left {
+                            flex: 1;
+                        }
+                        .contract-header-right img {
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 10px;
+                            border: 3px solid #f39c12;
                         }
                         @media print {
                             body { padding: 0.5in; }
@@ -2792,6 +3003,12 @@ The Employee acknowledges that these surviving obligations are essential to prot
                     document.getElementById('confirmIdDisplay').innerText = this.value || '[Enter ID above]';
                 });
             }
+            
+            // Add event listeners to duration radio buttons
+            const radios = document.querySelectorAll('input[name="contract-duration"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', updateSelectedDurationDisplay);
+            });
         });
 
         // ============================================
@@ -2807,6 +3024,8 @@ The Employee acknowledges that these surviving obligations are essential to prot
             console.log(`✅ Loaded ${contractClauses.length} COMPLETE clauses - all full text displayed`);
             console.log('✅ Weekly Sales Target: 5,000,000 UGX');
             console.log('✅ Probation Period: 3 Months');
+            console.log('✅ Default Manager: Mr. Abaho');
+            console.log('✅ Workers can now choose their own contract duration with custom days option');
             console.log('✅ QR codes now contain ALL contract data - works on ANY device');
             console.log('✅ Enhanced Electronic Signature with Non-Repudiation enabled');
         }
