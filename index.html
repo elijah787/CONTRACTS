@@ -1558,7 +1558,7 @@
             else if (duration.unit === 'days') durationDisplay = `${duration.value} Days`;
             else if (duration.unit === 'years') durationDisplay = 'Permanent';
             
-            // Build contract HTML
+            // Build contract HTML with image on RIGHT side
             let contractHTML = `
                 <div class="contract-header">
                     <div class="contract-header-left">
@@ -1740,6 +1740,7 @@
                 <html><head><style>
                     body { font-family: 'Times New Roman', serif; padding: 40px; }
                     .clause { margin: 15px 0; padding: 15px; border-left: 4px solid #f39c12; }
+                    .contract-header { display: flex; justify-content: space-between; align-items: center; }
                 </style></head>
                 <body>${content}</body></html>
             `;
@@ -1905,7 +1906,7 @@
             }
             
             updateManagerDisplay();
-            console.log('✅ System ready - 25 full clauses, share buttons, verification card');
+            console.log('✅ System ready - 25 full clauses, share buttons, verification card, image on RIGHT side');
         });
 
         function showVerificationFromData(data) {
