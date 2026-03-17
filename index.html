@@ -451,7 +451,7 @@
             background: #f8f9fa;
             padding: 20px;
             border-radius: 8px;
-            max-height: 500px;
+            max-height: 600px;
             overflow-y: auto;
             margin: 15px 0;
             border: 2px solid #f39c12;
@@ -459,22 +459,26 @@
         }
 
         .clause-mini {
-            padding: 15px;
-            margin: 10px 0;
+            padding: 20px;
+            margin: 15px 0;
             background: white;
-            border-radius: 5px;
+            border-radius: 8px;
             border-left: 4px solid #f39c12;
             font-size: 14px;
             line-height: 1.6;
             white-space: pre-wrap;
             word-wrap: break-word;
+            text-align: justify;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .clause-mini strong {
             color: #f39c12;
             display: block;
-            margin-bottom: 8px;
-            font-size: 16px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 1px solid #f39c12;
+            padding-bottom: 8px;
         }
 
         .generate-btn {
@@ -576,6 +580,8 @@
             text-align: justify;
             line-height: 1.6;
             page-break-inside: avoid;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         .clause-number {
@@ -1833,20 +1839,31 @@
             localStorage.setItem('contract_duration', JSON.stringify(contractDuration));
             document.querySelectorAll('.duration-option').forEach(opt => opt.classList.remove('selected'));
             event.target.classList.add('selected');
-            document.getElementById('current-duration-display').innerText = `${value} ${unit.toUpperCase()}`;
         }
 
         function displayClausePreviews() {
             const container = document.getElementById('clauses-preview-container');
-            container.innerHTML = '<h4 style="color: #f39c12;">ALL 25 CLAUSES - FULL TEXT</h4>';
-            contractClauses.forEach(clause => {
-                container.innerHTML += `<div class="clause-mini"><strong>${clause.split('\n')[0]}</strong><br>${clause.substring(0, 200)}...</div>`;
+            container.innerHTML = '<h4 style="color: #f39c12; margin-bottom: 20px; text-align: center;">ALL 25 CLAUSES - FULL TEXT</h4>';
+            
+            // Display each clause in full - NO TRUNCATION
+            contractClauses.forEach((clause, index) => {
+                container.innerHTML += `
+                    <div class="clause-mini">
+                        <strong>${clause.split('\n')[0]}</strong>
+                        <div style="white-space: pre-wrap;">${clause.replace(/\n/g, '<br>')}</div>
+                    </div>
+                `;
             });
         }
 
         function toggleClauses() {
             const container = document.getElementById('clauses-preview-container');
             container.style.display = container.style.display === 'none' ? 'block' : 'none';
+            
+            // Scroll to top when opening
+            if (container.style.display === 'block') {
+                container.scrollTop = 0;
+            }
         }
 
         function prepareContractForGeneration() {
@@ -1905,7 +1922,6 @@
                 showRoleScreen();
             }
             
-            updateManagerDisplay();
             console.log('✅ System ready - 25 full clauses, share buttons, verification card, image on RIGHT side');
         });
 
@@ -1950,11 +1966,6 @@
                 <button class="verification-btn print-btn" onclick="window.print()">🖨️ PRINT</button>
                 <button class="verification-btn share-btn-verify" onclick="showRoleScreen()">🏠 HOME</button>
             `;
-        }
-
-        function updateManagerDisplay() {
-            const display = document.getElementById('current-manager-display');
-            if (display) display.innerText = `${managerSignature.name} (${managerSignature.title})`;
         }
     </script>
 </body>
